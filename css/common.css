@@ -242,3 +242,68 @@ footer {
 .container-secundario-der-card3 {
   background-color: var(--morado);
 }
+
+.alert-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 250px;
+  max-width: 400px;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  animation: fadeInOut 4s ease forwards;
+}
+
+.alert.success {
+  background-color: #4caf50;
+}
+
+.alert.error {
+  background-color: #f44336;
+}
+
+.alert.info {
+  background-color: #2196f3;
+}
+
+.alert.warning {
+  background-color: #ff9800;
+}
+
+.alert .close-btn {
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 15px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/pages/generales-paso.css" />
   </head>
   <body>
+    <div class="alert-container" id="alert-container"></div>
     <header>
       <div class="header">
         <div class="container-logo">
@@ -294,5 +295,16 @@
         </div>
       </div>
     </footer>
+
+    <!-- Prueba del componente showAlert.js -->
+
+    <script type="module" src="../js/showAlert.js"></script>
+    <script type="module">
+      import { showAlert } from "../js/showAlert.js";
+      const button = document.getElementById("btnFiltrar");
+      button.addEventListener("click", () => {
+        showAlert("warning", "Formulario enviado correctamente!");
+      });
+    </script>
   </body>
 </html>
