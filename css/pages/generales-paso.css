@@ -1,0 +1,83 @@
+.container-nav {
+  padding: 7.5px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.container-nav-izq {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.container-nav select {
+  margin: 0px 5px;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+  width: 80px;
+  background-color: transparent;
+  color: white;
+  font-size: medium;
+}
+
+.btn-paso,
+.btn-informe {
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  opacity: 90%;
+  width: 80px;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-informe {
+  border: white 1px solid;
+  border-radius: 50px;
+}
+
+.btn-paso:hover,
+.btn-informe:hover {
+  transform: scale(1.1);
+  opacity: 100%;
+}
+
+.btn-paso {
+  background-color: var(--magenta);
+}
+
+.btn-inicio {
+  background-color: var(--gris-claro);
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  font-size: medium;
+  font-weight: 500;
+  border: white 1px solid;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-inicio:hover {
+  background-color: var(--gris);
+}
+
+.btn-filtrar {
+  color: black;
+  padding: 5px 15px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  width: 80px;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-filtrar:hover {
+  background-color: var(--gris-claro);
+}

@@ -1,25 +1,3 @@
-.header {
-  display: flex;
-  flex-direction: column;
-}
-
-.container-logo {
-  background-color: var(--celeste);
-  padding: 15px 0px;
-  display: flex;
-  align-items: center;
-}
-
-.container-nav {
-  display: flex;
-  gap: 20px;
-  color: white;
-  align-items: center;
-  flex-direction: row;
-  padding: 10px 1px;
-  background-color: #333;
-}
-
 .btn-paso,
 .btn-general,
 .btn-informe {
@@ -119,6 +97,15 @@
   padding: 3vh 30vh;
   border-radius: 20px;
   border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.btn-paso-grande:hover,
+.btn-general-grande:hover {
+  transform: scale(1.04);
+  opacity: 90%;
+  box-shadow: 0px 0px 10px 0px;
 }
 
 .btn-general-grande {
@@ -127,27 +114,6 @@
 
 .btn-paso-grande {
   background-color: var(--magenta);
-}
-
-.container-footer {
-  display: flex;
-  width: 80%;
-  margin: auto;
-  align-items: center;
-}
-
-.container-footer-img {
-  display: flex;
-  align-items: center;
-}
-
-.container-footer-img img {
-  height: 50px;
-  width: auto;
-}
-
-.container-footer-text p {
-  color: white;
 }
 
 /* MEDIAQUERYS */
@@ -172,10 +138,6 @@
     padding: 3vh 27.5vh;
     border-radius: 20px;
     border: none;
-  }
-  .container-footer {
-    width: 50%;
-    margin: auto;
   }
 }
 
@@ -204,9 +166,5 @@
     flex-direction: column;
     margin: 0px 0px;
     gap: 25px;
-  }
-
-  .container-footer {
-    width: 100%;
   }
 }
