@@ -128,46 +128,6 @@ main {
   gap: 40px;
 }
 
-.container-secundario-der-card1,
-.container-secundario-der-card2,
-.container-secundario-der-card3 {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 250px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: white;
-  background-color: cadetblue;
-  transition: all 0.3s ease-in-out;
-}
-
-.container-secundario-der-card1:hover,
-.container-secundario-der-card2:hover,
-.container-secundario-der-card3:hover {
-  transform: scale(1.03);
-  cursor: zoom-in;
-}
-
-.container-secundario-der-card1:active,
-.container-secundario-der-card2:active,
-.container-secundario-der-card3:active {
-  transform: scale(1.2);
-  cursor: zoom-out;
-}
-
-.container-secundario-der-card1 {
-  background-color: var(--celeste);
-}
-
-.container-secundario-der-card2 {
-  background-color: var(--magenta);
-}
-
-.container-secundario-der-card3 {
-  background-color: var(--morado);
-}
-
 .container-card1-info,
 .container-card2-info,
 .container-card3-info {
