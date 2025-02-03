@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../img/icons/favicon-16x16.png" />
+    <title>Paso | Resultados</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/pages/generales-paso.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="container-logo">
+          <a href="index.html">
+            <img src="../img/Logo_DINE_negativo.png" alt="logo" class="logo" />
+          </a>
+        </div>
+        <div class="container-nav">
+          <div class="container-nav-izq">
+            <select name="year" id="selectAnio">
+              <option value="" disabled selected>Año</option>
+            </select>
+            <select name="cargo" id="selectCargo">
+              <option value="" disabled selected>Cargo</option>
+            </select>
+            <select name="distrito" id="selectDistrito">
+              <option value="" disabled selected>Distrito</option>
+            </select>
+            <select name="seccion" id="selectSeccion">
+              <option value="" disabled selected>Seccion</option>
+            </select>
+
+            <button class="btn-filtrar" id="btnFiltrar">Filtrar</button>
+            <a href="generales.html" class="btn-generales">generales</a>
+            <a href="informes.html" class="btn-informe">Informes</a>
+          </div>
+          <div class="container-nav-der">
+            <a href="index.html" class="btn-inicio">Inicio</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container-principal">
+        <h1 id="tituloPrincipal">Elecciones 202? | Paso</h1>
+        <p id="parrafoPrincipal">
+          2021 > Paso > Provisorio > Senadores provinciales > Corrientes
+        </p>
+      </div>
+      <div class="container-secundario">
+        <div class="container-secundario-izq">
+          <button class="btn-add-informe" id="btnAddInforme">
+            + Agregar a informes
+          </button>
+        </div>
+        <div class="container-secundario-der">
+          <!-- Cards -->
+
+          <div class="container-secundario-der-card1">
+            <div class="contianer-card1-logo">
+              <p style="color: white">Logo</p>
+            </div>
+            <div class="container-card1-info">
+              <h6>Mesas computadas</h6>
+              <p style="color: white">2.154</p>
+            </div>
+          </div>
+
+          <div class="container-secundario-der-card2">
+            <div class="contianer-card2-logo">
+              <p style="color: white">Logo</p>
+            </div>
+            <div class="container-card2-info">
+              <h6>Electores</h6>
+              <p style="color: white">64.123</p>
+            </div>
+          </div>
+
+          <div class="container-secundario-der-card3">
+            <div class="contianer-card3-logo">
+              <p style="color: white">Logo</p>
+            </div>
+            <div class="container-card3-info">
+              <h6>Participacion sobre estructurado</h6>
+              <p style="color: white">62.5%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tablas -->
+
+      <div class="grid-container">
+        <div class="grid-1">
+          <table class="grilla">
+            <thead>
+              <h2 class="titulo-grid">Agrupaciones politicas</h2>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <h3 class="sub-titulo">Juntos por el cambio</h3>
+                  <div class="text">
+                    <p class="partido-politico">JUNTOS</p>
+
+                    <p>38%<br />30000 VOTOS</p>
+                  </div>
+
+                  <div
+                    class="progress"
+                    style="background: var(--grafica-amarillo-claro)"
+                  >
+                    <div
+                      class="progress-bar"
+                      style="width: 38%; background: var(--grafica-amarillo)"
+                    >
+                      <span class="progress-bar-text">38%</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="text">
+                    <p class="partido-politico">PJ</p>
+                    <p>20%<br />12000 VOTOS</p>
+                  </div>
+                  <div
+                    class="progress"
+                    style="background: var(--grafica-amarillo-claro)"
+                  >
+                    <div
+                      class="progress-bar"
+                      style="width: 20%; background: var(--grafica-amarillo)"
+                    >
+                      <span class="progress-bar-text">20%</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h3 class="sub-titulo">ECO + VAMOS CORRIENTES</h3>
+                  <div class="text">
+                    <p class="partido-politico">VERDE</p>
+                    <p>38%<br />30000 VOTOS</p>
+                  </div>
+
+                  <div
+                    class="progress"
+                    style="background: var(--grafica-verde-claro)"
+                  >
+                    <div
+                      class="progress-bar"
+                      style="width: 15%; background-color: green"
+                    >
+                      <span class="progress-bar-text">38%</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-2">
+          <table class="grilla">
+            <thead>
+              <h2 id="titulo-provincia" class="titulo-grid">Buenos Aires</h2>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="provincia"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-3">
+          <table class="grilla">
+            <thead>
+              <h2 class="titulo-grid">Resumen de Votos</h2>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="resumen-votos">
+                  <div class="chart-wrap horizontal">
+                    <div class="grid">
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 85%;
+                          --bar-color: var(--grafica-amarillo);
+                        "
+                        data-name="Partido 1"
+                        title="Your Blog 85%"
+                      ></div>
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 23%;
+                          --bar-color: var(--grafica-lila2);
+                        "
+                        data-name="Partido 2"
+                        title="Medium
+                    23%"
+                      ></div>
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 7%;
+                          --bar-color: var(--grafica-bordo);
+                        "
+                        data-name="Partido 3"
+                        title="Tumblr
+                    7%"
+                      ></div>
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 38%;
+                          --bar-color: var(--grafica-celeste);
+                        "
+                        data-name="Partido 4"
+                        title="Facebook
+                    38%"
+                      ></div>
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 35%;
+                          --bar-color: var(--grafica-lila);
+                        "
+                        data-name="Partido 5"
+                        title="YouTube
+                    35%"
+                      ></div>
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 30%;
+                          --bar-color: var(--grafica-bordo);
+                        "
+                        data-name="Partido 6"
+                        title="LinkedIn
+                    30%"
+                      ></div>
+
+                      <div
+                        class="bar"
+                        style="
+                          --bar-value: 20%;
+                          --bar-color: var(--grafica-gris);
+                        "
+                        data-name="Otros"
+                        title="Other
+                    20%"
+                      ></div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container-footer">
+        <div class="container-footer-img">
+          <img
+            src="../img/icons/Ministerio-del-Interior_pluma.1ab9a7a7.png"
+            alt="ministerio"
+          />
+          <img
+            src="../img/icons/Logo_DINE_negativo.a88f983e.png"
+            alt="dine-neg"
+          />
+          <img src="../img/icons/logos_001-10.4430c8d5.png" alt="001logo" />
+        </div>
+        <div class="container-footer-text">
+          <p>
+            “Resultados Provisorios en base a telegramas recibidos (Art. 43 Ley
+            26571 y Art. 105 Ley 19945). Los porcentajes de las agrupaciones
+            políticas son calculados sobre los votos válidos (PASO) conforme al
+            art. 45 Ley 26.571 y afirmativos (Generales). No se incluyen los
+            votos correspondientes a los electores residentes en el exterior ni
+            privados de la libertad. Al usar este sitio usted acepta los
+            <a href="www.google.com" id="link-footer"
+              >Términos y Condiciones."</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
