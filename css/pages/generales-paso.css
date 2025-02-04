@@ -46,6 +46,15 @@
   opacity: 100%;
 }
 
+.btn-filtrar:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.btn-filtrar:disabled:hover {
+  background-color: gray;
+}
+
 .btn-generales {
   background-color: var(--celeste);
 }
@@ -164,6 +173,12 @@ main {
   overflow: auto;
 }
 
+.grid-1 tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
 .grilla {
   width: 100%;
   padding: 0px 10px;
@@ -202,21 +217,21 @@ main {
 .grid-1 tbody::-webkit-scrollbar-thumb,
 .grid-2::-webkit-scrollbar-thumb,
 .grid-3::-webkit-scrollbar-thumb {
-  background: #222;
+  background: #c4c4c4;
   border-radius: 10px;
 }
 
 .grid-1 tbody::-webkit-scrollbar-thumb:hover,
 .grid-2::-webkit-scrollbar-thumb:hover,
 .grid-3::-webkit-scrollbar-thumb:hover {
-  background: #213333; /* Efecto hover */
+  background: #afafaf; /* Efecto hover */
   cursor: grab;
 }
 
 .grid-1 tbody::-webkit-scrollbar-thumb:active,
 .grid-2::-webkit-scrollbar-thumb:active,
 .grid-3::-webkit-scrollbar-thumb:active {
-  background: #213333; /* Efecto hover */
+  background: #9b9b9b; /* Efecto hover */
   cursor: grabbing;
 }
 
@@ -238,6 +253,9 @@ main {
   font-weight: bold;
   color: var(--textos);
   font-size: 9px;
+}
+option {
+  color: black;
 }
 
 .chart-wrap {

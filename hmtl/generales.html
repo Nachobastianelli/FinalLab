@@ -19,7 +19,7 @@
         </div>
         <div class="container-nav">
           <div class="container-nav-izq">
-            <select name="year" id="selectAnio">
+            <select name="year" id="selectPeriodo">
               <option value="" disabled selected>Año</option>
             </select>
             <select name="cargo" id="selectCargo">
@@ -31,10 +31,16 @@
             <select name="seccion" id="selectSeccion">
               <option value="" disabled selected>Seccion</option>
             </select>
-
+            <input
+              type="hidden"
+              id="hdSeccionProvincial"
+              name="hdSeccionProvincial"
+            />
             <button class="btn-filtrar" id="btnFiltrar">Filtrar</button>
             <a href="paso.html" class="btn-paso">Paso</a>
-            <a href="informes.html" class="btn-informe">Informes</a>
+            <a href="informes.html" class="btn-informe" id="btnInformes"
+              >Informes</a
+            >
           </div>
           <div class="container-nav-der">
             <a href="index.html" class="btn-inicio">Inicio</a>
@@ -65,7 +71,7 @@
             </div>
             <div class="container-card1-info">
               <h6>Mesas computadas</h6>
-              <p style="color: white">2.154</p>
+              <p style="color: white" id="mesasComputadas">2.154</p>
             </div>
           </div>
 
@@ -75,7 +81,7 @@
             </div>
             <div class="container-card2-info">
               <h6>Electores</h6>
-              <p style="color: white">64.123</p>
+              <p style="color: white" id="electores">64.123</p>
             </div>
           </div>
 
@@ -85,7 +91,7 @@
             </div>
             <div class="container-card3-info">
               <h6>Participacion sobre estructurado</h6>
-              <p style="color: white">62.5%</p>
+              <p style="color: white" id="porcentaje">62.5%</p>
             </div>
           </div>
         </div>
@@ -299,12 +305,6 @@
     <!-- Prueba del componente showAlert.js -->
 
     <script type="module" src="../js/showAlert.js"></script>
-    <script type="module">
-      import { showAlert } from "../js/showAlert.js";
-      const button = document.getElementById("btnFiltrar");
-      button.addEventListener("click", () => {
-        showAlert("warning", "Formulario enviado correctamente!");
-      });
-    </script>
+    <script type="module" src="../js/generales.js"></script>
   </body>
 </html>

@@ -152,7 +152,6 @@ footer {
   width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background: #fff;
-  border-radius: 10px;
   border: 1px solid var(--borde-Grilla);
   max-height: 600px;
   border-collapse: collapse;
@@ -178,21 +177,27 @@ footer {
   table-layout: fixed;
 }
 
-.election-report th,
-.election-report td {
-  text-align: left;
-  border-bottom: 1px solid var(--borde-Grilla);
-  padding: 15px;
-  text-align: center;
+.election-report tbody::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
-.election-report th {
-  color: #666;
-  font-weight: bold;
-  text-transform: uppercase;
+.election-report tbody::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
 }
 
-.election-report td {
-  border-bottom: 1px solid #ddd;
-  max-width: 250px;
+.election-report tbody::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+}
+
+.election-report tbody::-webkit-scrollbar-thumb:hover {
+  background: rgb(148, 148, 148);
+  cursor: grab;
+}
+
+.election-report tbody::-webkit-scrollbar-thumb:active {
+  background: rgb(182, 182, 182);
+  cursor: grabbing;
 }
