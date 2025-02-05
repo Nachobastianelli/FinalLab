@@ -1,4 +1,6 @@
 import { showAlert } from "../js/showAlert.js";
+import { provinciasSVG } from "./mapas.js";
+import { iconSvg } from "./svg.js";
 
 // URL de la API
 const UrlApi = "https://resultados.mininterior.gob.ar/api";
@@ -17,9 +19,15 @@ const distritoSelect = $("#selectDistrito");
 const seccionSelect = $("#selectSeccion");
 const btnFiltrar = $("#btnFiltrar");
 const inputSeccionProvincial = $("#hdSeccionProvincial");
-const btnInformes = $("#btnInformes");
+const btnInformes = $("#btnAddInforme");
 const tituloPrincipal = $("#tituloPrincipal");
 const parrafoPrincipal = $("#parrafoPrincipal");
+const tituloProvincia = $("#titulo-provincia");
+const mapaProvincia = $("#provincia");
+const logoMesas = $("#logoMesas");
+const logoParticipacion = $("#logoParticipacion");
+const logoElectores = $("#logoElectores");
+const resumenVotos = $("#resumenVotos");
 
 const mesasComputadas = $("#mesasComputadas");
 const electores = $("#electores");
@@ -38,7 +46,7 @@ let cargoTitulo = "";
 let seccionTitulo = "";
 
 let datosGenerales = null; // Almacena los datos que retorna la API
-let resultados;
+let resultados; // Almacena los datos que retorna la API
 
 btnFiltrar.disabled = true;
 
@@ -52,6 +60,26 @@ const actualizarTitulos = () => {
   tituloPrincipal.textContent = `${titulo}`;
   parrafoPrincipal.textContent = `${parrafo}`;
 };
+
+const cambiarMapa = () => {
+  const provincia = provinciasSVG.find(
+    (item) => item.provincia.toUpperCase() === distritoTitulo.toUpperCase()
+  );
+
+  if (provincia) {
+    tituloProvincia.textContent = provincia.provincia;
+
+    mapaProvincia.innerHTML = provincia.svg;
+  } else {
+    svgContainer.innerHTML = "<p>La imagen no se pudo cargar</p>";
+  }
+};
+
+function removerHijos(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
 
 const filtrarResultados = async () => {
   let seccionProvincialId = 0;
@@ -71,10 +99,22 @@ const filtrarResultados = async () => {
     resultados = await result.json();
     console.log(resultados);
 
+    let porcentajeNotNull = resultados.estadoRecuento.participacionPorcentaje
+      ? resultados.estadoRecuento.participacionPorcentaje
+      : 0;
+
+    let mesas1 = iconSvg.mesas;
+
     mesasComputadas.textContent = `${resultados.estadoRecuento.mesasTotalizadas}`;
     electores.textContent = `${resultados.estadoRecuento.cantidadElectores}`;
-    porcentaje.textContent = `${resultados.estadoRecuento.participacionPorcentaje}%`;
+    porcentaje.textContent = `${porcentajeNotNull}%`;
+    logoElectores.innerHTML = `${iconSvg.electores}`;
+    logoMesas.innerHTML = mesas1;
+    logoParticipacion.innerHTML = iconSvg.participacion;
     actualizarTitulos();
+    cambiarMapa();
+    completarResumenVotos();
+    completarResumenAgrupaciones();
   }
 };
 
@@ -158,6 +198,92 @@ const limpiarSelect = (selectElement) => {
     "<option value='' disabled selected>Seleccione</option>";
 };
 
+const completarResumenVotos = () => {
+  const agrupaciones = resultados.valoresTotalizadosPositivos.sort(
+    (a, b) => b.votosPorcentaje - a.votosPorcentaje
+  );
+
+  let cont = 0;
+
+  while (resumenVotos.firstChild) {
+    resumenVotos.removeChild(resumenVotos.firstChild);
+  }
+
+  agrupaciones.forEach((agrupacion) => {
+    if (cont < 7) {
+      const divBarra = document.createElement("div");
+      divBarra.classList.add("bar");
+      divBarra.style.width = `${agrupacion.votosPorcentaje}%`;
+      const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
+        Math.random() * 256
+      )}, ${Math.floor(Math.random() * 256)})`;
+      divBarra.style.background = randomColor;
+      divBarra.dataset.name = agrupacion.nombreAgrupacion;
+      divBarra.title = `${agrupacion.nombreAgrupacion} ${agrupacion.votosPorcentaje}%`;
+      cont++;
+      resumenVotos.style.display = "block";
+      resumenVotos.appendChild(divBarra);
+    }
+  });
+};
+
+const completarResumenAgrupaciones = () => {
+  const agrupaciones = resultados.valoresTotalizadosPositivos;
+  const tablaAgrupaciones = document.querySelector(".grid-1 tbody");
+
+  while (tablaAgrupaciones.firstChild) {
+    tablaAgrupaciones.removeChild(tablaAgrupaciones.firstChild);
+  }
+
+  agrupaciones.forEach((agrupacion) => {
+    const fila = document.createElement("tr");
+    const celda = document.createElement("td");
+
+    if (agrupacion.subTitulo) {
+      const subTitulo = document.createElement("h3");
+      subTitulo.classList.add("sub-titulo");
+      subTitulo.textContent = agrupacion.subTitulo;
+      celda.appendChild(subTitulo);
+    }
+
+    const divText = document.createElement("div");
+    divText.classList.add("text");
+
+    const partido = document.createElement("p");
+    partido.classList.add("partido-politico");
+    partido.textContent = agrupacion.nombreAgrupacion;
+
+    const votos = document.createElement("p");
+    const porcentajeVotos = `${agrupacion.votosPorcentaje}%`;
+    votos.innerHTML = `${porcentajeVotos}<br />${agrupacion.votos} VOTOS`;
+
+    divText.appendChild(partido);
+    divText.appendChild(votos);
+
+    celda.appendChild(divText);
+
+    // Barra de progreso
+    const divProgress = document.createElement("div");
+    divProgress.classList.add("progress");
+    divProgress.style.background = "#f4f4f4";
+
+    const divProgressBar = document.createElement("div");
+    divProgressBar.classList.add("progress-bar");
+    divProgressBar.style.width = `${agrupacion.votosPorcentaje}%`;
+    const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)})`;
+    divProgressBar.style.background = randomColor;
+    divProgressBar.innerHTML = `<span class="progress-bar-text">${agrupacion.votosPorcentaje}%</span>`;
+
+    divProgress.appendChild(divProgressBar);
+    celda.appendChild(divProgress);
+
+    fila.appendChild(celda);
+    tablaAgrupaciones.appendChild(fila);
+  });
+};
+
 const cargarSeccion = () => {
   distritoTitulo =
     distritoSelect.options[distritoSelect.selectedIndex].textContent;
@@ -200,13 +326,9 @@ function agregarInforme() {
     seccionId: seccionSelect.value,
     circuitoId: "",
     mesaId: "",
-    añoSeleccionado: seleccion.anio,
-    cargoSeleccionado: seleccion.cargo,
-    distritoSeleccionado: seleccion.distrito,
-    seccionSeleccionada: seleccion.seccion,
   };
 
-  const nuevoInforme = `${informe.anio}|${informe.tipoRecuento}|${informe.tipoEleccion}|${informe.categoriaId}|${informe.distritoId}|${informe.seccionProvincialId}|${informe.seccionId}|${informe.circuitoId}|${informe.mesaId}|${informe.añoSeleccionado}|${informe.cargoSeleccionado}|${informe.distritoSeleccionado}|${informe.seccionSeleccionada}`;
+  const nuevoInforme = `${informe.anio}|${informe.tipoRecuento}|${informe.tipoEleccion}|${informe.categoriaId}|${informe.distritoId}|${informe.seccionProvincialId}|${informe.seccionId}|${informe.circuitoId}|${informe.mesaId}`;
 
   let informes = localStorage.getItem("INFORMES")
     ? JSON.parse(localStorage.getItem("INFORMES"))

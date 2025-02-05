@@ -51,6 +51,14 @@
   cursor: not-allowed;
 }
 
+.container-provincia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  margin: auto;
+}
+
 .btn-filtrar:disabled:hover {
   background-color: gray;
 }
