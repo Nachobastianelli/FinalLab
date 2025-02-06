@@ -22,4 +22,6 @@ Bienvenido al proyecto de visualización de **votaciones pasadas y estadísticas
 
 ---
 
+# ⛓ **link** ⛓
 
+<a href="https://final-lab-bastianelli.netlify.app/">Click here</a>
