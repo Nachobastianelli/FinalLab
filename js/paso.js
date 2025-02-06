@@ -1,6 +1,5 @@
 import { showAlert } from "../js/showAlert.js";
 import { provinciasSVG } from "./mapas.js";
-import { iconSvg } from "./svg.js";
 
 // URL de la API
 const UrlApi = "https://resultados.mininterior.gob.ar/api";
@@ -49,6 +48,7 @@ let datosGenerales = null; // Almacena los datos que retorna la API
 let resultados; // Almacena los datos que retorna la API
 
 btnFiltrar.disabled = true;
+btnInformes.disabled = true;
 
 //Funcion al presionar el filtrar
 
@@ -103,14 +103,12 @@ const filtrarResultados = async () => {
       ? resultados.estadoRecuento.participacionPorcentaje
       : 0;
 
-    let mesas1 = iconSvg.mesas;
-
     mesasComputadas.textContent = `${resultados.estadoRecuento.mesasTotalizadas}`;
     electores.textContent = `${resultados.estadoRecuento.cantidadElectores}`;
     porcentaje.textContent = `${porcentajeNotNull}%`;
-    logoElectores.innerHTML = `${iconSvg.electores}`;
-    logoMesas.innerHTML = mesas1;
-    logoParticipacion.innerHTML = iconSvg.participacion;
+    porcentaje.hidden = false;
+    electores.hidden = false;
+    mesasComputadas.hidden = false;
     actualizarTitulos();
     cambiarMapa();
     completarResumenVotos();
@@ -328,8 +326,15 @@ function agregarInforme() {
     mesaId: "",
   };
 
-  const nuevoInforme = `${informe.anio}|${informe.tipoRecuento}|${informe.tipoEleccion}|${informe.categoriaId}|${informe.distritoId}|${informe.seccionProvincialId}|${informe.seccionId}|${informe.circuitoId}|${informe.mesaId}`;
-
+  const nuevoInforme = `${informe.anio}|${informe.tipoRecuento}|${
+    informe.tipoEleccion
+  }|${informe.categoriaId}|${informe.distritoId}|${
+    informe.seccionProvincialId
+  }|${informe.seccionId}|${informe.circuitoId}|${
+    informe.mesaId
+  }|${distritoTitulo}|${
+    tipoEleccion === 1 ? "Paso" : "Generales"
+  }|${cargoTitulo}|${seccionTitulo}`;
   let informes = localStorage.getItem("INFORMES")
     ? JSON.parse(localStorage.getItem("INFORMES"))
     : [];
@@ -372,5 +377,6 @@ btnFiltrar.addEventListener("click", () => {
 
   showAlert("success", "Consulta realizada correctamente.");
   console.log("seleccion", seleccion);
+  btnInformes.disabled = false;
   filtrarResultados();
 });

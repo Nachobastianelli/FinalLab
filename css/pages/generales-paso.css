@@ -46,9 +46,11 @@
   opacity: 100%;
 }
 
-.btn-filtrar:disabled {
+.btn-filtrar:disabled,
+.btn-add-informe:disabled {
   background-color: gray;
   cursor: not-allowed;
+  color: black;
 }
 
 .container-provincia {
@@ -59,7 +61,9 @@
   margin: auto;
 }
 
-.btn-filtrar:disabled:hover {
+.btn-filtrar:disabled:hover,
+.btn-add-informe:disabled:hover {
+  transform: scale(1);
   background-color: gray;
 }
 

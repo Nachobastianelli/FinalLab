@@ -171,6 +171,17 @@ footer {
   width: 100%;
 }
 
+.sin-informes {
+  position: absolute;
+  top: 400px;
+  color: red;
+  font-size: xx-large;
+  font-weight: 800;
+  z-index: 1500;
+  padding: 1000px;
+  margin: 1000px;
+}
+
 .election-report tr {
   display: table;
   width: 100%;
