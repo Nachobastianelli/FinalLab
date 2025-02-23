@@ -215,7 +215,7 @@ const completarResumenVotos = () => {
       divBarra.style.width = `${agrupacion.votosPorcentaje}%`;
       const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
         Math.random() * 256
-      )}, ${Math.floor(Math.random() * 256)})`;
+      )}, ${Math.floor(Math.random() * 256)})`; //Result rgb(256,256,256)
       divBarra.style.background = randomColor;
       divBarra.dataset.name = agrupacion.nombreAgrupacion;
       divBarra.title = `${agrupacion.nombreAgrupacion} ${agrupacion.votosPorcentaje}%`;
@@ -238,12 +238,12 @@ const completarResumenAgrupaciones = () => {
     const fila = document.createElement("tr");
     const celda = document.createElement("td");
 
-    if (agrupacion.subTitulo) {
-      const subTitulo = document.createElement("h3");
-      subTitulo.classList.add("sub-titulo");
-      subTitulo.textContent = agrupacion.subTitulo;
-      celda.appendChild(subTitulo);
-    }
+    // if (agrupacion.nombreAgrupacion) {
+    //   const subTitulo = document.createElement("h3");
+    //   subTitulo.classList.add("sub-titulo");
+    //   subTitulo.textContent = agrupacion.nombreAgrupacion;
+    //   celda.appendChild(subTitulo);
+    // }
 
     const divText = document.createElement("div");
     divText.classList.add("text");
@@ -314,6 +314,7 @@ const cargarSeccion = () => {
     }
   });
 };
+
 function agregarInforme() {
   const informe = {
     anio: periodosSelect.value,
@@ -350,12 +351,11 @@ function agregarInforme() {
   }
 }
 
-// Eventos
+// Eventos ordenados
 document.addEventListener("DOMContentLoaded", () => {
   cargarPeriodos();
 });
 
-btnInformes.addEventListener("click", agregarInforme);
 periodosSelect.addEventListener("change", cargarCargos);
 cargoSelect.addEventListener("change", cargarDistrito);
 distritoSelect.addEventListener("change", cargarSeccion);
@@ -366,19 +366,9 @@ seccionSelect.addEventListener("change", () => {
 });
 
 btnFiltrar.addEventListener("click", () => {
-  seleccion.seccion = seccionSelect.value;
-  console.log(seleccion);
-  const camposIncompletos = Object.keys(seleccion).some(
-    (key) => !seleccion[key]
-  );
-
-  if (camposIncompletos) {
-    showAlert("warning", "Debe completar todos los campos.");
-    return;
-  }
-
   showAlert("success", "Consulta realizada correctamente.");
-  console.log("seleccion", seleccion);
   btnInformes.disabled = false;
   filtrarResultados();
 });
+
+btnInformes.addEventListener("click", agregarInforme);

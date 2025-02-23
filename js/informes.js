@@ -109,6 +109,9 @@ const buscarData = async () => {
         `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${info.anio}&tipoRecuento=${info.recuento}&tipoEleccion=${info.eleccion}&categoriaId=${info.cargo}&distritoId=${info.distrito}&seccionProvincialId=${info.seccionProv}&seccionId=${info.seccion}&circuitoId=${info.circuito}&mesaId=${info.mesa}`
       );
 
+      console.log(
+        `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${info.anio}&tipoRecuento=${info.recuento}&tipoEleccion=${info.eleccion}&categoriaId=${info.cargo}&distritoId=${info.distrito}&seccionProvincialId=${info.seccionProv}&seccionId=${info.seccion}&circuitoId=${info.circuito}&mesaId=${info.mesa}`
+      );
       if (!response.ok) {
         showAlert("error", "No se procesó la solicitud con éxito");
         return;
@@ -156,7 +159,7 @@ const buscarData = async () => {
       let count = 0;
       const tdDpa = document.createElement("td");
 
-      agrupaciones.forEach((agrupacion, index) => {
+      agrupaciones.forEach((agrupacion) => {
         //Lo limito a 3 para que quede mas esteico, si no esta la reestrticcion muestra todo
         if (count < 3) {
           count++;

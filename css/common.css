@@ -264,7 +264,7 @@ footer {
   font-size: 14px;
   font-weight: 500;
   color: white;
-  animation: fadeInOut 4s ease forwards;
+  animation: fadeInOut 4s ease-in-out;
 }
 
 .alert.success {
@@ -273,10 +273,6 @@ footer {
 
 .alert.error {
   background-color: #f44336;
-}
-
-.alert.info {
-  background-color: #2196f3;
 }
 
 .alert.warning {
@@ -303,7 +299,7 @@ footer {
     transform: translateY(0);
   }
   100% {
-    opacity: 0;
     transform: translateY(-20px);
+    opacity: 0;
   }
 }
